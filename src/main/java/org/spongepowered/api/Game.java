@@ -32,6 +32,7 @@ import org.spongepowered.api.data.persistence.DataBuilder;
 import org.spongepowered.api.data.persistence.DataSerializable;
 import org.spongepowered.api.event.EventManager;
 import org.spongepowered.api.network.channel.ChannelManager;
+import org.spongepowered.api.packs.ResourceManager;
 import org.spongepowered.api.plugin.PluginManager;
 import org.spongepowered.api.registry.BuilderProvider;
 import org.spongepowered.api.registry.FactoryProvider;
@@ -168,6 +169,13 @@ public interface Game extends RegistryHolder {
     AssetManager assetManager();
 
     /**
+     * Gets the {@link ResourceManager}.
+     *
+     * @return The resource manager
+     */
+    ResourceManager resourceManager();
+
+    /**
      * Gets the {@link ConfigManager} used to load and manage configuration files
      * for plugins.
      *
@@ -197,7 +205,7 @@ public interface Game extends RegistryHolder {
      * @return The {@link SqlManager} instance.
      */
     SqlManager sqlManager();
-    
+
     /**
      * Gets the {@link ServiceProvider.GameScoped}, used to provide Sponge
      * services that plugins may provide. Services provided here are

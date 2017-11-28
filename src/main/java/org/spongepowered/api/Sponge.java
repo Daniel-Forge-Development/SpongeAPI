@@ -32,6 +32,7 @@ import org.spongepowered.api.data.DataManager;
 import org.spongepowered.api.event.EventManager;
 import org.spongepowered.api.event.lifecycle.LifecycleEvent;
 import org.spongepowered.api.network.channel.ChannelManager;
+import org.spongepowered.api.packs.ResourceManager;
 import org.spongepowered.api.plugin.PluginManager;
 import org.spongepowered.api.scheduler.Scheduler;
 import org.spongepowered.api.service.ServiceProvider;
@@ -103,6 +104,15 @@ public final class Sponge {
      */
     public static AssetManager assetManager() {
         return Sponge.game().assetManager();
+    }
+
+    /**
+     * Gets the {@link ResourceManager} instance.
+     *
+     * @return The resource manager instance
+     */
+    public static ResourceManager resourceManager() {
+        return Sponge.game().resourceManager();
     }
 
     /**
