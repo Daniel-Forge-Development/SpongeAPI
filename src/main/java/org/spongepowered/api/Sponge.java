@@ -32,8 +32,8 @@ import org.spongepowered.api.data.DataManager;
 import org.spongepowered.api.event.EventManager;
 import org.spongepowered.api.event.lifecycle.LifecycleEvent;
 import org.spongepowered.api.network.channel.ChannelManager;
-import org.spongepowered.api.packs.ResourceManager;
 import org.spongepowered.api.plugin.PluginManager;
+import org.spongepowered.api.resource.ResourceManager;
 import org.spongepowered.api.scheduler.Scheduler;
 import org.spongepowered.api.service.ServiceProvider;
 import org.spongepowered.api.sql.SqlManager;
@@ -44,7 +44,6 @@ import org.spongepowered.api.util.metric.MetricsConfigManager;
  * for the API.
  */
 public final class Sponge {
-
     @Inject private @Nullable static Game game;
 
     /**

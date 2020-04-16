@@ -26,6 +26,8 @@ package org.spongepowered.api;
 
 import org.spongepowered.api.event.CauseStackManager;
 import org.spongepowered.api.registry.RegistryHolder;
+import org.spongepowered.api.resource.ResourceManager;
+import org.spongepowered.api.resource.pack.PackList;
 import org.spongepowered.api.scheduler.Scheduler;
 
 /**
@@ -47,6 +49,20 @@ public interface Engine extends RegistryHolder {
      * @return The cause stack manager
      */
     CauseStackManager causeStackManager();
+
+    /**
+     * Gets the {@link PackList} instance of this engine.
+     *
+     * @return The pack list
+     */
+    PackList packList();
+
+    /**
+     * Gets the {@link ResourceManager} for this engine.
+     *
+     * @return The resource manager
+     */
+    ResourceManager resourceManager();
 
     /**
      * Gets the {@link Scheduler} used to schedule sync tasks on this {@link Engine}.
