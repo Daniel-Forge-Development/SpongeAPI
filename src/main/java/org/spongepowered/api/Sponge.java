@@ -26,14 +26,12 @@ package org.spongepowered.api;
 
 import com.google.inject.Inject;
 import org.checkerframework.checker.nullness.qual.Nullable;
-import org.spongepowered.api.asset.AssetManager;
 import org.spongepowered.api.config.ConfigManager;
 import org.spongepowered.api.data.DataManager;
 import org.spongepowered.api.event.EventManager;
 import org.spongepowered.api.event.lifecycle.LifecycleEvent;
 import org.spongepowered.api.network.channel.ChannelManager;
 import org.spongepowered.api.plugin.PluginManager;
-import org.spongepowered.api.resource.ResourceManager;
 import org.spongepowered.api.scheduler.Scheduler;
 import org.spongepowered.api.service.ServiceProvider;
 import org.spongepowered.api.sql.SqlManager;
@@ -94,24 +92,6 @@ public final class Sponge {
      */
     public static EventManager eventManager() {
         return Sponge.game().eventManager();
-    }
-
-    /**
-     * Gets the {@link AssetManager} instance.
-     *
-     * @return The asset manager instance
-     */
-    public static AssetManager assetManager() {
-        return Sponge.game().assetManager();
-    }
-
-    /**
-     * Gets the {@link ResourceManager} instance.
-     *
-     * @return The resource manager instance
-     */
-    public static ResourceManager resourceManager() {
-        return Sponge.game().resourceManager();
     }
 
     /**

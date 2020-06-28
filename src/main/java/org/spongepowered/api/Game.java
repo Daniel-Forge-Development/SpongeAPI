@@ -25,7 +25,6 @@
 package org.spongepowered.api;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.spongepowered.api.asset.AssetManager;
 import org.spongepowered.api.config.ConfigManager;
 import org.spongepowered.api.data.DataManager;
 import org.spongepowered.api.data.persistence.DataBuilder;
@@ -36,7 +35,6 @@ import org.spongepowered.api.plugin.PluginManager;
 import org.spongepowered.api.registry.BuilderProvider;
 import org.spongepowered.api.registry.FactoryProvider;
 import org.spongepowered.api.registry.RegistryHolder;
-import org.spongepowered.api.resource.ResourceManager;
 import org.spongepowered.api.scheduler.Scheduler;
 import org.spongepowered.api.service.ServiceProvider;
 import org.spongepowered.api.sql.SqlManager;
@@ -160,20 +158,6 @@ public interface Game extends RegistryHolder {
      * @return The event manager
      */
     EventManager eventManager();
-
-    /**
-     * Gets the {@link AssetManager}.
-     *
-     * @return The asset manager
-     */
-    AssetManager assetManager();
-
-    /**
-     * Gets the {@link ResourceManager}.
-     *
-     * @return The resource manager
-     */
-    ResourceManager resourceManager();
 
     /**
      * Gets the {@link ConfigManager} used to load and manage configuration files
