@@ -26,9 +26,15 @@ package org.spongepowered.api;
 
 import org.spongepowered.api.event.CauseStackManager;
 import org.spongepowered.api.registry.RegistryHolder;
+import org.spongepowered.api.resource.Resource;
 import org.spongepowered.api.resource.ResourceManager;
+import org.spongepowered.api.resource.ResourceReloadListener;
+import org.spongepowered.api.resource.pack.Pack;
+import org.spongepowered.api.resource.pack.PackDiscoverer;
 import org.spongepowered.api.resource.pack.PackList;
 import org.spongepowered.api.scheduler.Scheduler;
+
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Shared functionality between {@link Client} and {@link Server} engines.
@@ -77,4 +83,12 @@ public interface Engine extends RegistryHolder {
      * @return {@code true} if main thread, {@code false} if not
      */
     boolean onMainThread();
+
+    /**
+     * Rediscovers {@link Pack}s using all registered {@link PackDiscoverer}s and
+     * reloads all {@link Resource}s by running all registered {@link ResourceReloadListener}s.
+     *
+     * @return A future that completes when reloading is complete
+     */
+    CompletableFuture<Void> reloadResources();
 }
