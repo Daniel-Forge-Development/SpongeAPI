@@ -24,6 +24,8 @@
  */
 package org.spongepowered.api.resource.pack;
 
+import org.spongepowered.plugin.PluginContainer;
+
 import java.util.Collection;
 import java.util.Optional;
 
@@ -64,4 +66,11 @@ public interface PackInformationManager {
      */
     Optional<PackInformation> information(String name);
 
+    /**
+     * Retrieves a {@link PluginContainer plugin's} {@link PackInformation pack information}.
+     *
+     * @param container The container
+     * @return The pack
+     */
+    PackInformation information(PluginContainer container);
 }

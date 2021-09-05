@@ -57,14 +57,7 @@ public interface Engine extends RegistryHolder {
     CauseStackManager causeStackManager();
 
     /**
-     * Gets the {@link PackInformationManager} instance of this engine.
-     *
-     * @return The pack list
-     */
-    PackInformationManager packList();
-
-    /**
-     * Gets the {@link ResourceManager} for this engine.
+     * Gets the {@link ResourceManager}.
      *
      * @return The resource manager
      */

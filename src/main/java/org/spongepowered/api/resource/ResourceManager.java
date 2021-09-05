@@ -25,6 +25,7 @@
 package org.spongepowered.api.resource;
 
 import org.spongepowered.api.resource.pack.Pack;
+import org.spongepowered.api.resource.pack.PackInformationManager;
 import org.spongepowered.plugin.PluginContainer;
 
 import java.io.Closeable;
@@ -43,12 +44,11 @@ import java.util.stream.Stream;
 public interface ResourceManager {
 
     /**
-     * Retrieves a {@link PluginContainer plugin's} pack.
+     * Gets the {@link PackInformationManager}.
      *
-     * @param container The container
-     * @return The pack
+     * @return The pack information manager
      */
-    Pack pack(PluginContainer container);
+    PackInformationManager packInformationManager();
 
     /**
      * Loads the {@link Resource resource} at the given path, or throws an
