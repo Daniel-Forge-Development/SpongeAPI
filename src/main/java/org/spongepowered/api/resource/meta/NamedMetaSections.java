@@ -28,12 +28,13 @@ import org.spongepowered.api.ResourceKey;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.registry.DefaultedRegistryReference;
 import org.spongepowered.api.registry.RegistryKey;
+import org.spongepowered.api.registry.RegistryTypes;
 
-public class NamedMetaSections {
+public final class NamedMetaSections {
 
     // SORTFIELDS:ON
 
-    private static final DefaultedRegistryReference<NamedMetaSection<PackMeta>> PACK = NamedMetaSections.key(ResourceKey.sponge("pack/pack"));
+    public static final DefaultedRegistryReference<NamedMetaSection<PackMeta>> PACK = NamedMetaSections.key(ResourceKey.sponge("pack/pack"));
 
     // SORTFIELDS:OFF
 
@@ -41,6 +42,6 @@ public class NamedMetaSections {
     }
 
     private static <T> DefaultedRegistryReference<NamedMetaSection<T>> key(final ResourceKey location) {
-        return RegistryKey.<NamedMetaSection<T>>of(Registries.NAMED_META_SECTION.registry(), location).asDefaultedReference(() -> Sponge.getGame().registries());
+        return RegistryKey.of(RegistryTypes.NAMED_META_SECTION, location).asDefaultedReference(Sponge::game);
     }
 }

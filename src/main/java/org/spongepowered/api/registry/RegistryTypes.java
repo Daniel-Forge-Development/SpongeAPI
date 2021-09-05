@@ -117,6 +117,9 @@ import org.spongepowered.api.map.color.MapShade;
 import org.spongepowered.api.map.decoration.MapDecorationType;
 import org.spongepowered.api.map.decoration.orientation.MapDecorationOrientation;
 import org.spongepowered.api.placeholder.PlaceholderParser;
+import org.spongepowered.api.resource.meta.NamedMetaSection;
+import org.spongepowered.api.resource.pack.PackType;
+import org.spongepowered.api.resource.pack.PackVersion;
 import org.spongepowered.api.scheduler.TaskPriority;
 import org.spongepowered.api.scoreboard.CollisionRule;
 import org.spongepowered.api.scoreboard.Visibility;
@@ -338,6 +341,8 @@ public final class RegistryTypes {
 
     public static final DefaultedRegistryType<MusicDisc> MUSIC_DISC = RegistryTypes.spongeKeyInGame("music_disc");
 
+    public static final DefaultedRegistryType<NamedMetaSection<?>> NAMED_META_SECTION = RegistryTypes.spongeKeyInGame("named_meta_section");
+
     public static final DefaultedRegistryType<NotePitch> NOTE_PITCH = RegistryTypes.spongeKeyInGame("note_pitch");
 
     public static final DefaultedRegistryType<ObjectiveDisplayMode> OBJECTIVE_DISPLAY_MODE = RegistryTypes.spongeKeyInGame("objective_display_mode");
@@ -347,6 +352,10 @@ public final class RegistryTypes {
     public static final DefaultedRegistryType<Operation> OPERATION = RegistryTypes.spongeKeyInGame("operation");
 
     public static final DefaultedRegistryType<Orientation> ORIENTATION = RegistryTypes.spongeKeyInGame("orientation");
+
+    public static final DefaultedRegistryType<PackType> PACK_TYPE = RegistryTypes.spongeKeyInGame("pack_type");
+
+    public static final DefaultedRegistryType<PackVersion> PACK_VERSION = RegistryTypes.spongeKeyInGame("pack_version");
 
     public static final DefaultedRegistryType<PaletteType<?, ?>> PALETTE_TYPE = RegistryTypes.spongeKeyInGame("palette_type");
 

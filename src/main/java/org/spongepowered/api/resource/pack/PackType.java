@@ -24,7 +24,7 @@
  */
 package org.spongepowered.api.resource.pack;
 
-import org.spongepowered.api.NamedCatalogType;
+import org.spongepowered.api.registry.DefaultedRegistryType;
 import org.spongepowered.api.util.annotation.CatalogedBy;
 
 /**
@@ -32,6 +32,7 @@ import org.spongepowered.api.util.annotation.CatalogedBy;
  * resources or server data.
  */
 @CatalogedBy(PackTypes.class)
-public interface PackType extends NamedCatalogType {
+public interface PackType extends DefaultedRegistryType<PackType> {
 
+    String name();
 }

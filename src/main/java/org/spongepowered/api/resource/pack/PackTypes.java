@@ -28,6 +28,7 @@ import org.spongepowered.api.ResourceKey;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.registry.DefaultedRegistryReference;
 import org.spongepowered.api.registry.RegistryKey;
+import org.spongepowered.api.registry.RegistryTypes;
 
 public final class PackTypes {
 
@@ -43,6 +44,6 @@ public final class PackTypes {
     }
 
     private static DefaultedRegistryReference<PackType> key(final ResourceKey location) {
-        return RegistryKey.<PackType>of(Registries.PACK_TYPE.registry(), location).asDefaultedReference(() -> Sponge.getGame().registries());
+        return RegistryKey.of(RegistryTypes.PACK_TYPE, location).asDefaultedReference(Sponge::game);
     }
 }

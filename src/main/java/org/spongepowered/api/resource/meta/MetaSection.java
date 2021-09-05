@@ -41,7 +41,7 @@ public interface MetaSection<T> {
      *
      * @return The query of the key
      */
-    DataQuery getQuery();
+    DataQuery query();
 
     /**
      * Deserializes the metadata section to an object representing its data.

@@ -24,9 +24,10 @@
  */
 package org.spongepowered.api.resource.meta;
 
-import org.spongepowered.api.NamedCatalogType;
 import org.spongepowered.api.util.annotation.CatalogedBy;
 
 @CatalogedBy(NamedMetaSections.class)
-public interface NamedMetaSection<T> extends MetaSection<T>, NamedCatalogType {
+public interface NamedMetaSection<T> extends MetaSection<T> {
+
+    String name();
 }

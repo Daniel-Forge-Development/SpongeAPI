@@ -36,12 +36,12 @@ public interface PackMeta {
      *
      * @return The description
      */
-    Component getDescription();
+    Component description();
 
     /**
      * Gets the format version of the pack.
      *
      * @return The format version
      */
-    int getPackFormat();
+    int packFormat();
 }

@@ -42,49 +42,49 @@ public interface PackInfo extends Nameable {
      *
      * @return The pack
      */
-    Pack getPack();
+    Pack pack();
 
     /**
      * Gets the title of the pack.
      *
      * @return The title
      */
-    Component getTitle();
+    Component title();
 
     /**
      * Gets the description of the pack.
      *
      * @return The description
-     * @see PackMeta#getDescription()
+     * @see PackMeta#description()
      */
-    Component getDescription();
+    Component description();
 
     /**
      * Gets the version compatibility of the pack.
      *
      * @return The version compatibility
      */
-    PackVersion getVersion();
+    PackVersion version();
 
     /**
      * Gets the priority of this pack, first or last.
      *
      * @return The priority
      */
-    Priority getPriority();
+    Priority priority();
 
     /**
      * Gets whether this pack is forced to be enabled at all times.
      *
      * @return True if forced enabled, false if disable-able
      */
-    boolean isForced();
+    boolean forced();
 
     /**
      * Gets whether this pack is order locked on top or bottom.
      *
      * @return True if order locked, false if order-able
-     * @see #getPriority()
+     * @see #priority()
      */
     boolean isLocked();
 

@@ -44,7 +44,7 @@ import java.util.stream.Stream;
 /**
  * A resource can represent any kind of loaded data. It can be a file on the
  * filesystem, a network location, or even generated at runtime. Use
- * {@link #getInputStream()} to load the data held by a resource.
+ * {@link #inputStream()} to load the data held by a resource.
  */
 public interface Resource extends Closeable {
 
@@ -53,7 +53,7 @@ public interface Resource extends Closeable {
      *
      * @return The path
      */
-    ResourcePath getPath();
+    ResourcePath path();
 
     /**
      * Gets the name of the {@link PackInfo pack} which owns this resource. To
@@ -63,7 +63,7 @@ public interface Resource extends Closeable {
      * @return The parent pack.
      * @see PackList#get(String)
      */
-    String getPack();
+    String pack();
 
     /**
      * Returns the {@link InputStream} of this resource. Multiple calls to this
@@ -72,7 +72,7 @@ public interface Resource extends Closeable {
      *
      * @return The input stream
      */
-    InputStream getInputStream();
+    InputStream inputStream();
 
     /**
      * Checks whether this resource has metadata or not.
@@ -89,7 +89,7 @@ public interface Resource extends Closeable {
      * @return The metadata or empty if it doesn't exist
      * @see NamedMetaSections
      */
-    <T> Optional<T> getMetadata(MetaSection<T> section);
+    <T> Optional<T> metadata(MetaSection<T> section);
 
     /**
      * Creates a new {@link BufferedReader} from this resource's
@@ -98,7 +98,7 @@ public interface Resource extends Closeable {
      * @param charset The charset to use, usually utf-8
      * @return The BufferedReader
      */
-    BufferedReader newBufferedReader(Charset charset);
+    BufferedReader newReader(Charset charset);
 
     /**
      * Reads the resource as text.

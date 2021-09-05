@@ -86,7 +86,7 @@ public interface ResourcePath extends Comparable<ResourcePath> {
      * @return A new path
      */
     static ResourcePath of(final ResourceKey key) {
-        return Sponge.getGame().getFactoryProvider().provide(Factory.class).of(key);
+        return Sponge.game().factoryProvider().provide(Factory.class).of(key);
     }
 
     /**
@@ -100,20 +100,20 @@ public interface ResourcePath extends Comparable<ResourcePath> {
      * Gets the namespace portion of this resource path.
      *
      * @return The namespace
-     * @see ResourceKey#getNamespace()
+     * @see ResourceKey#namespace()
      */
-    default String getNamespace() {
-        return this.key().getNamespace();
+    default String namespace() {
+        return this.key().namespace();
     }
 
     /**
      * Gets the path portion of this resource path.
      *
      * @return The path
-     * @see ResourceKey#getValue()
+     * @see ResourceKey#value()
      */
     default String getPath() {
-        return this.key().getValue();
+        return this.key().value();
     }
 
     // resolution methods
@@ -124,7 +124,7 @@ public interface ResourcePath extends Comparable<ResourcePath> {
      * @return The parent path
      * @throws IllegalStateException If the path has no parent
      */
-    ResourcePath getParent();
+    ResourcePath parent();
 
     /**
      * Resolves a path from the current location using the specified children.
@@ -146,21 +146,19 @@ public interface ResourcePath extends Comparable<ResourcePath> {
      */
     ResourcePath resolveSibling(String sibling, String... children);
 
-    // path utility methods
-
     /**
      * Gets the name of the file without any parent elements.
      *
      * @return The file name
      */
-    String getName();
+    String name();
 
     /**
      * Gets the base name of the file without any parent elements or extensions.
      *
      * @return The base file name
      */
-    String getBaseName();
+    String baseName();
 
     /**
      * Gets the extension of the file if any. If the file has no extension, an
@@ -168,7 +166,7 @@ public interface ResourcePath extends Comparable<ResourcePath> {
      *
      * @return The file extension
      */
-    String getExtension();
+    String extension();
 
     /**
      * Gets the string representation of this path as {@code "namspace:path"}

@@ -42,6 +42,7 @@ import org.spongepowered.api.util.metric.MetricsConfigManager;
  * for the API.
  */
 public final class Sponge {
+
     @Inject private @Nullable static Game game;
 
     /**

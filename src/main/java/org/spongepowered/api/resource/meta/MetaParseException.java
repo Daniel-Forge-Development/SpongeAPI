@@ -24,7 +24,9 @@
  */
 package org.spongepowered.api.resource.meta;
 
-public class MetaParseException extends RuntimeException {
+public final class MetaParseException extends RuntimeException {
+
+    private static final long serialVersionUID = -7843375998187638640L;
 
     public MetaParseException(String message) {
         super(message);

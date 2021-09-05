@@ -25,12 +25,12 @@
 package org.spongepowered.api.resource;
 
 import org.spongepowered.api.resource.pack.Pack;
-import org.spongepowered.api.util.CloseableList;
 
 import java.io.Closeable;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 import java.util.function.Predicate;
 
 /**
@@ -92,7 +92,7 @@ public interface ResourceManager {
      * @throws IOException           If a resource could not be read
      * @throws FileNotFoundException If there are no resources at the path
      */
-    CloseableList<Resource> loadAll(ResourcePath path) throws IOException;
+    List<Resource> loadAll(ResourcePath path) throws IOException;
 
     /**
      * Finds all the {@link ResourcePath resource paths} from all namespaces

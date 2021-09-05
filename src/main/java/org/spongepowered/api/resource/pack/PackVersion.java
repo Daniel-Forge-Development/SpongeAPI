@@ -24,7 +24,6 @@
  */
 package org.spongepowered.api.resource.pack;
 
-import org.spongepowered.api.NamedCatalogType;
 import org.spongepowered.api.util.annotation.CatalogedBy;
 
 /**
@@ -32,7 +31,9 @@ import org.spongepowered.api.util.annotation.CatalogedBy;
  * it is current, newer or older.
  */
 @CatalogedBy(PackVersions.class)
-public interface PackVersion extends NamedCatalogType {
+public interface PackVersion {
+
+    String name();
 
     /**
      * Gets whether this version is {@link PackVersions#COMPATIBLE compatible}.
