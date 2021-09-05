@@ -112,7 +112,7 @@ public interface ResourcePath extends Comparable<ResourcePath> {
      * @return The path
      * @see ResourceKey#value()
      */
-    default String getPath() {
+    default String path() {
         return this.key().value();
     }
 
@@ -180,6 +180,7 @@ public interface ResourcePath extends Comparable<ResourcePath> {
      * A factory to create {@link ResourcePath}s.
      */
     interface Factory {
+
         /**
          * Creates a new {@link ResourcePath} using the given
          * {@link ResourceKey}.

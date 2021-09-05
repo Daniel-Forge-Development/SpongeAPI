@@ -62,6 +62,6 @@ public interface PackList {
      * @param name The name of the pack
      * @return The pack info
      */
-    Optional<PackInfo> get(String name);
+    Optional<PackInfo> packInfo(String name);
 
 }

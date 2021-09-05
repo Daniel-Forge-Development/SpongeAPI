@@ -27,7 +27,7 @@ package org.spongepowered.api.resource.meta;
 import net.kyori.adventure.text.Component;
 
 /**
- * Metadata for a pack. It contains the description and pack format.
+ * Metadata for a pack. It contains the description and pack format version.
  */
 public interface PackMeta {
 
@@ -43,5 +43,5 @@ public interface PackMeta {
      *
      * @return The format version
      */
-    int packFormat();
+    int version();
 }

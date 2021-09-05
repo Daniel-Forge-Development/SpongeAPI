@@ -30,8 +30,8 @@ import java.io.Closeable;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 /**
  * The resource manager is in charge of loading {@link Resource Resources}.
@@ -66,33 +66,12 @@ public interface ResourceManager {
      * Loads all the {@link Resource resources} at the given path from all
      * active {@link Pack packs}.
      *
-     * <p>
-     * All the resources in the list need to be closed. To assist in this, you
-     * can wrap the entire list inside a try-with-resources block. Example:</p>
-     *
-     * <pre>
-     *     try (CloseableList&lt;Resource&gt; resources = resourceManager.loadAll(path)) {
-     *         for (Resource res : resources) {
-     *             InputStream in = res.getInputStream();
-     *         }
-     *     }
-     * </pre>
-     *
-     * <p>You can also use the forEach method, which will automatically close
-     * the list.</p>
-     *
-     * <pre>
-     *     resourceManager.loadAll(path).forEach(res -> {
-     *         InputStream in = res.getInputStream();
-     *     }
-     * </pre>
-     *
      * @param path The path to the resource
      * @return The list of all resources at the path
      * @throws IOException           If a resource could not be read
      * @throws FileNotFoundException If there are no resources at the path
      */
-    List<Resource> loadAll(ResourcePath path) throws IOException;
+    Stream<Resource> streamAll(ResourcePath path) throws IOException;
 
     /**
      * Finds all the {@link ResourcePath resource paths} from all namespaces

@@ -25,6 +25,7 @@
 package org.spongepowered.api.resource.pack;
 
 import org.spongepowered.api.registry.DefaultedRegistryType;
+import org.spongepowered.api.util.Nameable;
 import org.spongepowered.api.util.annotation.CatalogedBy;
 
 /**
@@ -32,7 +33,6 @@ import org.spongepowered.api.util.annotation.CatalogedBy;
  * resources or server data.
  */
 @CatalogedBy(PackTypes.class)
-public interface PackType extends DefaultedRegistryType<PackType> {
+public interface PackType extends DefaultedRegistryType<PackType>, Nameable {
 
-    String name();
 }

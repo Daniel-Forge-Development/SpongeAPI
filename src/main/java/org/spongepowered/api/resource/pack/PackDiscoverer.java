@@ -47,6 +47,7 @@ public interface PackDiscoverer {
 
     @FunctionalInterface
     interface PackInfoFactory {
+
         /**
          * Creates a new {@link PackInfo} from the given arguments. If the pack
          * does not have valid metadata, an empty optional is returned.

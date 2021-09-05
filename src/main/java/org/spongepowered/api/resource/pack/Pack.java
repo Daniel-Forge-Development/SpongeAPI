@@ -58,8 +58,8 @@ public interface Pack extends Nameable, Closeable {
      * @param path The path to the file to turn into a pack
      * @return The supplier to create a new pack.
      */
-    static Supplier<Pack> fromPath(Path path) {
-        return Sponge.game().factoryProvider().provide(Factory.class).fromPath(path);
+    static Supplier<Pack> path(Path path) {
+        return Sponge.game().factoryProvider().provide(Factory.class).path(path);
     }
 
     /**
@@ -68,20 +68,19 @@ public interface Pack extends Nameable, Closeable {
      * @param pluginContainer The plugin
      * @return The supplier to create a new pack
      */
-    static Supplier<Pack> fromPlugin(PluginContainer pluginContainer) {
-        return Sponge.game().factoryProvider().provide(Factory.class).fromPlugin(pluginContainer);
+    static Supplier<Pack> plugin(PluginContainer pluginContainer) {
+        return Sponge.game().factoryProvider().provide(Factory.class).plugin(pluginContainer);
     }
 
     /**
-     * Gets a resource from this pack if it exists. No other packs will be
-     * queried.
+     * Gets a resource from this pack if it exists.
      *
      * @param type The type of pack to query
      * @param path The domain named path
      * @return The resource
      * @see PackTypes
      */
-    InputStream openStream(PackType type, ResourcePath path) throws IOException;
+    InputStream newInputStream(PackType type, ResourcePath path) throws IOException;
 
     /**
      * Finds all the {@link ResourcePath}s in this pack matching the
@@ -114,7 +113,7 @@ public interface Pack extends Nameable, Closeable {
      * @return The set of namespaces
      * @see PackTypes
      */
-    Set<String> getNamespaces(PackType type);
+    Set<String> namespaces(PackType type);
 
     /**
      * Gets the metadata of this pack. The {@link MetaSection} deserializes a
@@ -127,13 +126,13 @@ public interface Pack extends Nameable, Closeable {
      * @throws IOException        If the data could not be read
      * @throws MetaParseException If the metadata could not be parsed
      */
-    <T> Optional<T> getMetadata(MetaSection<T> section) throws IOException;
+    <T> Optional<T> metadata(MetaSection<T> section) throws IOException;
 
     interface Factory {
 
-        Supplier<Pack> fromPath(Path path);
+        Supplier<Pack> path(Path path);
 
-        Supplier<Pack> fromPlugin(PluginContainer pluginContainer);
+        Supplier<Pack> plugin(PluginContainer pluginContainer);
 
     }
 }

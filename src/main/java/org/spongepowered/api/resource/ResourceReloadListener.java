@@ -101,6 +101,7 @@ public interface ResourceReloadListener {
     }
 
     interface Factory {
+
         /**
          * Creates a simple reload listener that reloads resources on the game
          * thread.
@@ -139,6 +140,7 @@ public interface ResourceReloadListener {
      * <p>This listener may cause longer reload times.</p>
      */
     interface SimpleReloadListener {
+
         /**
          * Called in the game executor to reload resources.
          *
@@ -154,6 +156,7 @@ public interface ResourceReloadListener {
      * @param <T> The type of the processed resource
      */
     interface PreparedReloadListener<T> {
+
         /**
          * Prepares the resources on the work thread.
          *
@@ -179,6 +182,7 @@ public interface ResourceReloadListener {
      * thread.</p>
      */
     interface DataTreeReloadListener {
+
         /**
          * Applies the data in the game executor.
          *
