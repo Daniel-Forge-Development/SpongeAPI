@@ -31,7 +31,7 @@ import java.util.Optional;
 import java.util.function.Supplier;
 
 /**
- * A pack discoverer will populate the {@link PackList} with {@link PackInfo}s
+ * A pack discoverer will populate the {@link PackInformationManager} with {@link PackInformation}s
  * and provide it a supplier to create a new {@link Pack}.
  *
  * @see RegisterPackDiscovererEvent
@@ -39,26 +39,26 @@ import java.util.function.Supplier;
 public interface PackDiscoverer {
 
     /**
-     * Populates the {@link PackList} with discovered {@link Pack}s.
+     * Populates the {@link PackInformationManager} with discovered {@link Pack}s.
      *
-     * @param packInfos A map containing all the packs
+     * @param packInformationByName A map containing all the packs
      */
-    void populate(Map<String, PackInfo> packInfos, PackInfoFactory factory);
+    void populate(Map<String, PackInformation> packInformationByName, PackInfoFactory factory);
 
     @FunctionalInterface
     interface PackInfoFactory {
 
         /**
-         * Creates a new {@link PackInfo} from the given arguments. If the pack
+         * Creates a new {@link PackInformation} from the given arguments. If the pack
          * does not have valid metadata, an empty optional is returned.
          *
-         * @param name     The name of the pack.
-         * @param forced   Whether the pack should always be loaded
-         * @param pack     The supplier for the pack
+         * @param name The name of the pack.
+         * @param forced Whether the pack should always be loaded
+         * @param pack The supplier for the pack
          * @param priority The priority, first or last
          * @return The new pack info definition
          */
-        Optional<PackInfo> createPackInfo(String name, boolean forced, Supplier<Pack> pack, PackInfo.Priority priority);
+        Optional<PackInformation> create(String name, boolean forced, Supplier<Pack> pack, PackInformation.Priority priority);
     }
 
 }

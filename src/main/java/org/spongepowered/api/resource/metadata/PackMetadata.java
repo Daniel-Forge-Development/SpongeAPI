@@ -22,46 +22,26 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.resource.pack;
+package org.spongepowered.api.resource.metadata;
 
-import java.util.Collection;
-import java.util.Optional;
+import net.kyori.adventure.text.Component;
 
 /**
- * The pack list keeps track of all the known {@link PackInfo}s and their
- * status.
+ * Metadata for a pack. It contains the description and pack format version.
  */
-public interface PackList {
+public interface PackMetadata {
 
     /**
-     * Gets the collection of all the known {@link PackInfo}s. The result is
-     * immutable. To add more packs, register a {@link PackDiscoverer}.
+     * Gets the description of the pack.
      *
-     * @return All the packs
+     * @return The description
      */
-    Collection<PackInfo> all();
+    Component description();
 
     /**
-     * Gets the collection of {@link PackInfo}s which are not enabled.
+     * Gets the format version of the pack.
      *
-     * @return The disabled packs
+     * @return The format version
      */
-    Collection<PackInfo> disabled();
-
-    /**
-     * Gets the collection of {@link PackInfo}s which are enabled.
-     *
-     * @return The enabled packs
-     */
-    Collection<PackInfo> enabled();
-
-    /**
-     * Gets a {@link PackInfo} with the given name. If none exists,
-     * {@link Optional#empty()} is returned.
-     *
-     * @param name The name of the pack
-     * @return The pack info
-     */
-    Optional<PackInfo> packInfo(String name);
-
+    int version();
 }

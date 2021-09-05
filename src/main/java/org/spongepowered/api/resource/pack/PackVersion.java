@@ -24,20 +24,8 @@
  */
 package org.spongepowered.api.resource.pack;
 
-import org.spongepowered.api.util.Nameable;
-import org.spongepowered.api.util.annotation.CatalogedBy;
-
-/**
- * A minimal version identifier. The only indication of the version is whether
- * it is current, newer or older.
- */
-@CatalogedBy(PackVersions.class)
-public interface PackVersion extends Nameable {
-
-    /**
-     * Gets whether this version is {@link PackVersions#COMPATIBLE compatible}.
-     *
-     * @return True if is compatible, false if not
-     */
-    boolean isCompatible();
+public enum PackVersion {
+    COMPATIBLE,
+    TOO_NEW,
+    TOO_OLD
 }

@@ -24,23 +24,19 @@
  */
 package org.spongepowered.api.resource.pack;
 
-import org.spongepowered.api.Sponge;
 import org.spongepowered.api.resource.Resource;
 import org.spongepowered.api.resource.ResourcePath;
-import org.spongepowered.api.resource.meta.MetaParseException;
-import org.spongepowered.api.resource.meta.MetaSection;
+import org.spongepowered.api.resource.metadata.MetadataParseException;
+import org.spongepowered.api.resource.metadata.MetadataSection;
 import org.spongepowered.api.util.Nameable;
-import org.spongepowered.plugin.PluginContainer;
 
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 
 /**
  * A resource pack or data pack can contain several {@link Resource resources}.
@@ -53,70 +49,52 @@ import java.util.function.Supplier;
 public interface Pack extends Nameable, Closeable {
 
     /**
-     * Creates a new pack from a file. The pack's name will be the file's name.
+     * Gets the {@link PackInformation information}.
      *
-     * @param path The path to the file to turn into a pack
-     * @return The supplier to create a new pack.
+     * @return The information
      */
-    static Supplier<Pack> path(Path path) {
-        return Sponge.game().factoryProvider().provide(Factory.class).path(path);
-    }
-
-    /**
-     * Creates a new pack from a plugin's source.
-     *
-     * @param pluginContainer The plugin
-     * @return The supplier to create a new pack
-     */
-    static Supplier<Pack> plugin(PluginContainer pluginContainer) {
-        return Sponge.game().factoryProvider().provide(Factory.class).plugin(pluginContainer);
-    }
+    PackInformation information();
 
     /**
      * Gets a resource from this pack if it exists.
      *
-     * @param type The type of pack to query
      * @param path The domain named path
      * @return The resource
-     * @see PackTypes
+     * @see PackType
      */
-    InputStream newInputStream(PackType type, ResourcePath path) throws IOException;
+    InputStream newInputStream(ResourcePath path) throws IOException;
 
     /**
      * Finds all the {@link ResourcePath}s in this pack matching the
      * prefix and filter, and within the given depth.
      *
-     * @param type      The type of pack resource to find
      * @param namespace The namespace to search
      * @param prefix    The prefix of the path
      * @param depth     The depth to search
      * @param filter    The filter every path must match
      * @return A collection of matching paths
-     * @see PackTypes
+     * @see PackType
      */
-    Collection<ResourcePath> find(PackType type, String namespace, String prefix, int depth, Predicate<String> filter);
+    Collection<ResourcePath> find(String namespace, String prefix, int depth, Predicate<String> filter);
 
     /**
      * Tests if this pack contains an entry at the given {@link ResourcePath}.
      *
-     * @param type The pack type to query
      * @param path The resource path
      * @return True if it exists, false if it does not
-     * @see PackTypes
+     * @see PackType
      */
-    boolean exists(PackType type, ResourcePath path);
+    boolean exists(ResourcePath path);
 
     /**
      * Gets the namespaces known by this pack.
      *
-     * @param type The pack type to query
      * @return The set of namespaces
-     * @see PackTypes
      */
-    Set<String> namespaces(PackType type);
+    Set<String> namespaces();
 
     /**
-     * Gets the metadata of this pack. The {@link MetaSection} deserializes a
+     * Gets the metadata of this pack. The {@link MetadataSection} deserializes a
      * section of the pack.mcmeta file in the pack root. If the pack.mcmeta
      * does not contain the query defined in the section,
      * {@link Optional#empty()} is returned.
@@ -124,15 +102,7 @@ public interface Pack extends Nameable, Closeable {
      * @param section The name metadata section type
      * @return The metadata if it exists
      * @throws IOException        If the data could not be read
-     * @throws MetaParseException If the metadata could not be parsed
+     * @throws MetadataParseException If the metadata could not be parsed
      */
-    <T> Optional<T> metadata(MetaSection<T> section) throws IOException;
-
-    interface Factory {
-
-        Supplier<Pack> path(Path path);
-
-        Supplier<Pack> plugin(PluginContainer pluginContainer);
-
-    }
+    <T> Optional<T> metadata(MetadataSection<T> section) throws IOException;
 }

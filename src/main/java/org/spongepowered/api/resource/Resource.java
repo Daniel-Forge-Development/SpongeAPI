@@ -27,10 +27,10 @@ package org.spongepowered.api.resource;
 import org.spongepowered.api.data.persistence.DataFormat;
 import org.spongepowered.api.data.persistence.DataFormats;
 import org.spongepowered.api.data.persistence.DataView;
-import org.spongepowered.api.resource.meta.MetaSection;
-import org.spongepowered.api.resource.meta.NamedMetaSections;
-import org.spongepowered.api.resource.pack.PackInfo;
-import org.spongepowered.api.resource.pack.PackList;
+import org.spongepowered.api.resource.metadata.MetadataSection;
+import org.spongepowered.api.resource.metadata.NamedMetadataSections;
+import org.spongepowered.api.resource.pack.PackInformation;
+import org.spongepowered.api.resource.pack.PackInformationManager;
 
 import java.io.BufferedReader;
 import java.io.Closeable;
@@ -56,12 +56,12 @@ public interface Resource extends Closeable {
     ResourcePath path();
 
     /**
-     * Gets the name of the {@link PackInfo pack} which owns this resource. To
+     * Gets the name of the {@link PackInformation pack} which owns this resource. To
      * get the instance, feed the returned value to
-     * {@link PackList#get(String)}.
+     * {@link PackInformationManager#information(String)}.
      *
      * @return The parent pack.
-     * @see PackList#get(String)
+     * @see PackInformationManager#information(String)
      */
     String pack();
 
@@ -87,9 +87,9 @@ public interface Resource extends Closeable {
      *
      * @param section The section serializer
      * @return The metadata or empty if it doesn't exist
-     * @see NamedMetaSections
+     * @see NamedMetadataSections
      */
-    <T> Optional<T> metadata(MetaSection<T> section);
+    <T> Optional<T> metadata(MetadataSection<T> section);
 
     /**
      * Creates a new {@link BufferedReader} from this resource's

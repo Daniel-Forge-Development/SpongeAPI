@@ -22,26 +22,5 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.resource.meta;
-
-import org.spongepowered.api.ResourceKey;
-import org.spongepowered.api.Sponge;
-import org.spongepowered.api.registry.DefaultedRegistryReference;
-import org.spongepowered.api.registry.RegistryKey;
-import org.spongepowered.api.registry.RegistryTypes;
-
-public final class NamedMetaSections {
-
-    // SORTFIELDS:ON
-
-    public static final DefaultedRegistryReference<NamedMetaSection<PackMeta>> PACK = NamedMetaSections.key(ResourceKey.sponge("pack/pack"));
-
-    // SORTFIELDS:OFF
-
-    private NamedMetaSections() {
-    }
-
-    private static <T> DefaultedRegistryReference<NamedMetaSection<T>> key(final ResourceKey location) {
-        return RegistryKey.of(RegistryTypes.NAMED_META_SECTION, location).asDefaultedReference(Sponge::game);
-    }
-}
+@org.checkerframework.framework.qual.DefaultQualifier(org.checkerframework.checker.nullness.qual.NonNull.class)
+package org.spongepowered.api.resource.metadata;

@@ -27,7 +27,7 @@ package org.spongepowered.api.event.resource;
 import org.spongepowered.api.Engine;
 import org.spongepowered.api.event.GenericEvent;
 import org.spongepowered.api.resource.pack.PackDiscoverer;
-import org.spongepowered.api.resource.pack.PackList;
+import org.spongepowered.api.resource.pack.PackInformationManager;
 
 /**
  * Event for registering {@link PackDiscoverer}s.
@@ -35,7 +35,7 @@ import org.spongepowered.api.resource.pack.PackList;
 public interface RegisterPackDiscovererEvent<T extends Engine> extends GenericEvent<T> {
 
     /**
-     * Adds a {@link PackDiscoverer} to the {@link PackList}.
+     * Adds a {@link PackDiscoverer} to the {@link PackInformationManager}.
      *
      * @param discoverer The discoverer
      */

@@ -22,21 +22,33 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.resource.meta;
+package org.spongepowered.api.resource.metadata;
 
-public final class MetaParseException extends RuntimeException {
+import org.spongepowered.api.data.persistence.DataQuery;
+import org.spongepowered.api.data.persistence.DataView;
 
-    private static final long serialVersionUID = -7843375998187638640L;
+/**
+ * A meta section is a well-known resource metadata object. Metadata is typically
+ * stored in a file with the resource and {@code .mcmeta} appended to the name.
+ * The file contains a json object with each key associated with a section.
+ *
+ * @param <T> The object type
+ */
+public interface MetadataSection<T> {
 
-    public MetaParseException(String message) {
-        super(message);
-    }
+    /**
+     * Gets the query of the key containing the meta section.
+     *
+     * @return The query of the key
+     */
+    DataQuery query();
 
-    public MetaParseException(String message, Throwable t) {
-        super(message, t);
-    }
-
-    public MetaParseException(Throwable t) {
-        super(t);
-    }
+    /**
+     * Deserializes the metadata section to an object representing its data.
+     *
+     * @param data The data result of the query
+     * @return The object representation
+     * @throws MetadataParseException If the metadata could not be parsed
+     */
+    T deserialize(DataView data) throws MetadataParseException;
 }

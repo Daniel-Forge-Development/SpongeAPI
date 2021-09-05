@@ -25,14 +25,21 @@
 package org.spongepowered.api.resource.pack;
 
 import net.kyori.adventure.text.Component;
-import org.spongepowered.api.resource.meta.PackMeta;
+import org.spongepowered.api.resource.metadata.PackMetadata;
 import org.spongepowered.api.util.Nameable;
 
 /**
  * Holds informational data about a {@link Pack}. It also functions as a
  * factory to create a new instance.
  */
-public interface PackInfo extends Nameable {
+public interface PackInformation extends Nameable {
+
+    /**
+     * Gets the {@link PackType type}.
+     *
+     * @return The type
+     */
+    PackType type();
 
     /**
      * Creates the pack associated with this pack info.
@@ -55,7 +62,7 @@ public interface PackInfo extends Nameable {
      * Gets the description of the pack.
      *
      * @return The description
-     * @see PackMeta#description()
+     * @see PackMetadata#description()
      */
     Component description();
 
@@ -89,6 +96,7 @@ public interface PackInfo extends Nameable {
     boolean isLocked();
 
     enum Priority {
-        FIRST, LAST
+        FIRST,
+        LAST
     }
 }

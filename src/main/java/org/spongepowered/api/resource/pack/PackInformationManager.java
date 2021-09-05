@@ -22,33 +22,46 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.resource.meta;
+package org.spongepowered.api.resource.pack;
 
-import org.spongepowered.api.data.persistence.DataQuery;
-import org.spongepowered.api.data.persistence.DataView;
+import java.util.Collection;
+import java.util.Optional;
 
 /**
- * A meta section is a well-known resource meta object. Meta is typically
- * stored in a file with the resource and {@code .mcmeta} appended to the name.
- * The file contains a json object with each key associated with a section.
- *
- * @param <T> The object type
+ * The pack list keeps track of all the known {@link PackInformation}s and their
+ * status.
  */
-public interface MetaSection<T> {
+public interface PackInformationManager {
 
     /**
-     * Gets the query of the key containing the meta section.
+     * Gets the collection of all the known {@link PackInformation}s. The result is
+     * immutable.
      *
-     * @return The query of the key
+     * @return All the packs
      */
-    DataQuery query();
+    Collection<PackInformation> all();
 
     /**
-     * Deserializes the metadata section to an object representing its data.
+     * Gets the collection of {@link PackInformation}s which are not enabled.
      *
-     * @param data The data result of the query
-     * @return The object representation
-     * @throws MetaParseException If the metadata could not be parsed
+     * @return The disabled packs
      */
-    T deserialize(DataView data) throws MetaParseException;
+    Collection<PackInformation> disabled();
+
+    /**
+     * Gets the collection of {@link PackInformation}s which are enabled.
+     *
+     * @return The enabled packs
+     */
+    Collection<PackInformation> enabled();
+
+    /**
+     * Gets a {@link PackInformation} with the given name. If none exists,
+     * {@link Optional#empty()} is returned.
+     *
+     * @param name The name of the pack
+     * @return The pack info
+     */
+    Optional<PackInformation> information(String name);
+
 }

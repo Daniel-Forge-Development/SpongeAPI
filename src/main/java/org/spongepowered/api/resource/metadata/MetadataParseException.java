@@ -22,5 +22,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-@org.checkerframework.framework.qual.DefaultQualifier(org.checkerframework.checker.nullness.qual.NonNull.class)
-package org.spongepowered.api.resource.meta;
+package org.spongepowered.api.resource.metadata;
+
+public final class MetadataParseException extends RuntimeException {
+
+    private static final long serialVersionUID = -7843375998187638640L;
+
+    public MetadataParseException(final String message) {
+        super(message);
+    }
+
+    public MetadataParseException(final String message, final Throwable t) {
+        super(message, t);
+    }
+
+    public MetadataParseException(final Throwable t) {
+        super(t);
+    }
+}

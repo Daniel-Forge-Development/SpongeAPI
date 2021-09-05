@@ -22,12 +22,26 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.resource.meta;
+package org.spongepowered.api.resource.metadata;
 
-import org.spongepowered.api.util.Nameable;
-import org.spongepowered.api.util.annotation.CatalogedBy;
+import org.spongepowered.api.ResourceKey;
+import org.spongepowered.api.Sponge;
+import org.spongepowered.api.registry.DefaultedRegistryReference;
+import org.spongepowered.api.registry.RegistryKey;
+import org.spongepowered.api.registry.RegistryTypes;
 
-@CatalogedBy(NamedMetaSections.class)
-public interface NamedMetaSection<T> extends MetaSection<T>, Nameable {
+public final class NamedMetadataSections {
 
+    // SORTFIELDS:ON
+
+    public static final DefaultedRegistryReference<NamedMetadataSection<PackMetadata>> PACK = NamedMetadataSections.key(ResourceKey.sponge("pack/pack"));
+
+    // SORTFIELDS:OFF
+
+    private NamedMetadataSections() {
+    }
+
+    private static <T> DefaultedRegistryReference<NamedMetadataSection<T>> key(final ResourceKey location) {
+        return RegistryKey.of(RegistryTypes.NAMED_META_SECTION, location).asDefaultedReference(Sponge::game);
+    }
 }

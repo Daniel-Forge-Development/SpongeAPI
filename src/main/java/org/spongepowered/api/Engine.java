@@ -31,7 +31,7 @@ import org.spongepowered.api.resource.ResourceManager;
 import org.spongepowered.api.resource.ResourceReloadListener;
 import org.spongepowered.api.resource.pack.Pack;
 import org.spongepowered.api.resource.pack.PackDiscoverer;
-import org.spongepowered.api.resource.pack.PackList;
+import org.spongepowered.api.resource.pack.PackInformationManager;
 import org.spongepowered.api.scheduler.Scheduler;
 
 import java.util.concurrent.CompletableFuture;
@@ -57,11 +57,11 @@ public interface Engine extends RegistryHolder {
     CauseStackManager causeStackManager();
 
     /**
-     * Gets the {@link PackList} instance of this engine.
+     * Gets the {@link PackInformationManager} instance of this engine.
      *
      * @return The pack list
      */
-    PackList packList();
+    PackInformationManager packList();
 
     /**
      * Gets the {@link ResourceManager} for this engine.

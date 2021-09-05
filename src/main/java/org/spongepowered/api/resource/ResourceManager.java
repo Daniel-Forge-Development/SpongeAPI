@@ -25,6 +25,7 @@
 package org.spongepowered.api.resource;
 
 import org.spongepowered.api.resource.pack.Pack;
+import org.spongepowered.plugin.PluginContainer;
 
 import java.io.Closeable;
 import java.io.FileNotFoundException;
@@ -40,6 +41,14 @@ import java.util.stream.Stream;
  * resources in packs which are a lower priority.</p>
  */
 public interface ResourceManager {
+
+    /**
+     * Retrieves a {@link PluginContainer plugin's} pack.
+     *
+     * @param container The container
+     * @return The pack
+     */
+    Pack pack(PluginContainer container);
 
     /**
      * Loads the {@link Resource resource} at the given path, or throws an

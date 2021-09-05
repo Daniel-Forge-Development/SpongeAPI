@@ -24,15 +24,7 @@
  */
 package org.spongepowered.api.resource.pack;
 
-import org.spongepowered.api.registry.DefaultedRegistryType;
-import org.spongepowered.api.util.Nameable;
-import org.spongepowered.api.util.annotation.CatalogedBy;
-
-/**
- * A pack type specifies the kind of resource a pack should load. i.e. client
- * resources or server data.
- */
-@CatalogedBy(PackTypes.class)
-public interface PackType extends DefaultedRegistryType<PackType>, Nameable {
-
+public enum PackType {
+    CLIENT_RESOURCES,
+    SERVER_DATA
 }
