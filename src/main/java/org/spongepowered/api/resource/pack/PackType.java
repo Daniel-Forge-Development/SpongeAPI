@@ -27,7 +27,7 @@ package org.spongepowered.api.resource.pack;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.util.Nameable;
 
-public interface PackType extends Nameable {
+public interface PackType {
 
     static PackType client() {
         return Sponge.game().factoryProvider().provide(Factory.class).client();
