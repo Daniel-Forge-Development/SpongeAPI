@@ -169,14 +169,6 @@ public interface ResourcePath extends Comparable<ResourcePath> {
     String extension();
 
     /**
-     * Gets the string representation of this path as {@code "namspace:path"}
-     *
-     * @return The string representation
-     * @see ResourceKey#asString()
-     */
-    String asString();
-
-    /**
      * A factory to create {@link ResourcePath}s.
      */
     interface Factory {

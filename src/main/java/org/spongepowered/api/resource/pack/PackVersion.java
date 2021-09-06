@@ -24,8 +24,28 @@
  */
 package org.spongepowered.api.resource.pack;
 
-public enum PackVersion {
-    COMPATIBLE,
-    TOO_NEW,
-    TOO_OLD
+import org.spongepowered.api.Sponge;
+
+public interface PackVersion {
+
+    static PackVersion compatible() {
+        return Sponge.game().factoryProvider().provide(Factory.class).compatible();
+    }
+
+    static PackVersion newer() {
+        return Sponge.game().factoryProvider().provide(Factory.class).newer();
+    }
+
+    static PackVersion older() {
+        return Sponge.game().factoryProvider().provide(Factory.class).older();
+    }
+
+    interface Factory {
+
+        PackVersion compatible();
+
+        PackVersion newer();
+
+        PackVersion older();
+    }
 }

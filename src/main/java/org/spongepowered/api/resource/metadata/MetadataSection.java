@@ -24,6 +24,7 @@
  */
 package org.spongepowered.api.resource.metadata;
 
+import org.spongepowered.api.Sponge;
 import org.spongepowered.api.data.persistence.DataQuery;
 import org.spongepowered.api.data.persistence.DataView;
 
@@ -35,6 +36,10 @@ import org.spongepowered.api.data.persistence.DataView;
  * @param <T> The object type
  */
 public interface MetadataSection<T> {
+
+    static MetadataSection<PackMetadata> pack() {
+        return Sponge.game().factoryProvider().provide(Factory.class).pack();
+    }
 
     /**
      * Gets the query of the key containing the meta section.
@@ -51,4 +56,9 @@ public interface MetadataSection<T> {
      * @throws MetadataParseException If the metadata could not be parsed
      */
     T deserialize(DataView data) throws MetadataParseException;
+
+    interface Factory {
+
+        MetadataSection<PackMetadata> pack();
+    }
 }

@@ -32,7 +32,6 @@ import org.spongepowered.api.util.Nameable;
 
 import java.io.Closeable;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
@@ -56,26 +55,27 @@ public interface Pack extends Nameable, Closeable {
     PackInformation information();
 
     /**
-     * Gets a resource from this pack if it exists.
+     * Gets a {@link Resource resource} within a {@link ResourcePath path} per {@link PackType type}.
      *
+     * @param type The type
      * @param path The domain named path
      * @return The resource
-     * @see PackType
      */
-    InputStream newInputStream(ResourcePath path) throws IOException;
+    Optional<Resource> resource(PackType type, ResourcePath path) throws IOException;
 
     /**
      * Finds all the {@link ResourcePath}s in this pack matching the
      * prefix and filter, and within the given depth.
      *
+     * @param type The type
      * @param namespace The namespace to search
-     * @param prefix    The prefix of the path
-     * @param depth     The depth to search
-     * @param filter    The filter every path must match
+     * @param prefix The prefix of the path
+     * @param depth The depth to search
+     * @param filter The filter every path must match
      * @return A collection of matching paths
      * @see PackType
      */
-    Collection<ResourcePath> find(String namespace, String prefix, int depth, Predicate<String> filter);
+    Collection<ResourcePath> resources(PackType type, String namespace, String prefix, int depth, Predicate<String> filter);
 
     /**
      * Tests if this pack contains an entry at the given {@link ResourcePath}.
@@ -87,11 +87,12 @@ public interface Pack extends Nameable, Closeable {
     boolean exists(ResourcePath path);
 
     /**
-     * Gets the namespaces known by this pack.
+     * Gets the {@link String namespaces} per {@link PackType type}.
      *
+     * @param type The type
      * @return The set of namespaces
      */
-    Set<String> namespaces();
+    Set<String> namespaces(PackType type);
 
     /**
      * Gets the metadata of this pack. The {@link MetadataSection} deserializes a

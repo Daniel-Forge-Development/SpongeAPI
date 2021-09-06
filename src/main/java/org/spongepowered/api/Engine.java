@@ -28,10 +28,8 @@ import org.spongepowered.api.event.CauseStackManager;
 import org.spongepowered.api.registry.RegistryHolder;
 import org.spongepowered.api.resource.Resource;
 import org.spongepowered.api.resource.ResourceManager;
-import org.spongepowered.api.resource.ResourceReloadListener;
 import org.spongepowered.api.resource.pack.Pack;
-import org.spongepowered.api.resource.pack.PackDiscoverer;
-import org.spongepowered.api.resource.pack.PackInformationManager;
+import org.spongepowered.api.resource.pack.PackRepository;
 import org.spongepowered.api.scheduler.Scheduler;
 
 import java.util.concurrent.CompletableFuture;
@@ -57,9 +55,12 @@ public interface Engine extends RegistryHolder {
     CauseStackManager causeStackManager();
 
     /**
-     * Gets the {@link ResourceManager}.
-     *
-     * @return The resource manager
+     * @return The {@link PackRepository pack repository}
+     */
+    PackRepository packRepository();
+
+    /**
+     * @return The {@link ResourceManager resource manager}
      */
     ResourceManager resourceManager();
 
@@ -78,8 +79,7 @@ public interface Engine extends RegistryHolder {
     boolean onMainThread();
 
     /**
-     * Rediscovers {@link Pack}s using all registered {@link PackDiscoverer}s and
-     * reloads all {@link Resource}s by running all registered {@link ResourceReloadListener}s.
+     * Rediscovers all {@link Pack packs} and reloads all {@link Resource resources}.
      *
      * <p>On the server, the future will always be completed.</p>
      *

@@ -24,41 +24,59 @@
  */
 package org.spongepowered.api.resource.pack;
 
-import org.spongepowered.api.event.resource.RegisterPackDiscovererEvent;
+import org.spongepowered.api.Engine;
+import org.spongepowered.plugin.PluginContainer;
 
-import java.util.Map;
+import java.util.Collection;
 import java.util.Optional;
-import java.util.function.Supplier;
 
 /**
- * A pack discoverer will populate the {@link PackInformationManager} with {@link PackInformation}s
- * and provide it a supplier to create a new {@link Pack}.
- *
- * @see RegisterPackDiscovererEvent
+ * The pack list keeps track of all the known {@link PackInformation}s and their
+ * status.
  */
-public interface PackDiscoverer {
+public interface PackRepository {
 
     /**
-     * Populates the {@link PackInformationManager} with discovered {@link Pack}s.
-     *
-     * @param packInformationByName A map containing all the packs
+     * @return The {@link Engine engine}
      */
-    void populate(Map<String, PackInformation> packInformationByName, PackInfoFactory factory);
+    Engine engine();
 
-    @FunctionalInterface
-    interface PackInfoFactory {
+    /**
+     * Gets the collection of all the known {@link PackInformation}s. The result is
+     * immutable.
+     *
+     * @return All the packs
+     */
+    Collection<PackInformation> all();
 
-        /**
-         * Creates a new {@link PackInformation} from the given arguments. If the pack
-         * does not have valid metadata, an empty optional is returned.
-         *
-         * @param name The name of the pack.
-         * @param forced Whether the pack should always be loaded
-         * @param pack The supplier for the pack
-         * @param priority The priority, first or last
-         * @return The new pack info definition
-         */
-        Optional<PackInformation> create(String name, boolean forced, Supplier<Pack> pack, PackInformation.Priority priority);
-    }
+    /**
+     * Gets the collection of {@link PackInformation}s which are not enabled.
+     *
+     * @return The disabled packs
+     */
+    Collection<PackInformation> disabled();
 
+    /**
+     * Gets the collection of {@link PackInformation}s which are enabled.
+     *
+     * @return The enabled packs
+     */
+    Collection<PackInformation> enabled();
+
+    /**
+     * Gets a {@link PackInformation} with the given name. If none exists,
+     * {@link Optional#empty()} is returned.
+     *
+     * @param name The name of the pack
+     * @return The pack info
+     */
+    Optional<PackInformation> information(String name);
+
+    /**
+     * Retrieves a {@link PluginContainer plugin's} {@link PackInformation pack information}.
+     *
+     * @param container The container
+     * @return The pack
+     */
+    PackInformation information(PluginContainer container);
 }

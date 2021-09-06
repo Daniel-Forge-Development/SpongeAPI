@@ -74,11 +74,9 @@ public interface PackInformation extends Nameable {
     PackVersion version();
 
     /**
-     * Gets the priority of this pack, first or last.
-     *
-     * @return The priority
+     * @return The {@link PackOrder order}
      */
-    Priority priority();
+    PackOrder order();
 
     /**
      * Gets whether this pack is forced to be enabled at all times.
@@ -91,12 +89,7 @@ public interface PackInformation extends Nameable {
      * Gets whether this pack is order locked on top or bottom.
      *
      * @return True if order locked, false if order-able
-     * @see #priority()
+     * @see #order()
      */
-    boolean isLocked();
-
-    enum Priority {
-        FIRST,
-        LAST
-    }
+    boolean locked();
 }

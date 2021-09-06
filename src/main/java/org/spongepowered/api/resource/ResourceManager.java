@@ -24,11 +24,9 @@
  */
 package org.spongepowered.api.resource;
 
+import org.spongepowered.api.Engine;
 import org.spongepowered.api.resource.pack.Pack;
-import org.spongepowered.api.resource.pack.PackInformationManager;
-import org.spongepowered.plugin.PluginContainer;
 
-import java.io.Closeable;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collection;
@@ -44,25 +42,13 @@ import java.util.stream.Stream;
 public interface ResourceManager {
 
     /**
-     * Gets the {@link PackInformationManager}.
-     *
-     * @return The pack information manager
+     * @return The {@link Engine engine}
      */
-    PackInformationManager packInformationManager();
+    Engine engine();
 
     /**
      * Loads the {@link Resource resource} at the given path, or throws an
      * exception if it doesn't exist.
-     *
-     * <p>Resource implements {@link Closeable}, so remember to close it.</p>
-     *
-     * <p>Example:</p>
-     *
-     * <pre>
-     *     try (Resource res = resourceManager.load(path)) {
-     *         InputStream in = res.getInputStream();
-     *     }
-     * </pre>
      *
      * @param path The path to the resource
      * @return The resource

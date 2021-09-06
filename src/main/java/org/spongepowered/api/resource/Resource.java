@@ -28,12 +28,9 @@ import org.spongepowered.api.data.persistence.DataFormat;
 import org.spongepowered.api.data.persistence.DataFormats;
 import org.spongepowered.api.data.persistence.DataView;
 import org.spongepowered.api.resource.metadata.MetadataSection;
-import org.spongepowered.api.resource.metadata.NamedMetadataSections;
-import org.spongepowered.api.resource.pack.PackInformation;
-import org.spongepowered.api.resource.pack.PackInformationManager;
+import org.spongepowered.api.resource.pack.Pack;
 
 import java.io.BufferedReader;
-import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
@@ -46,24 +43,17 @@ import java.util.stream.Stream;
  * filesystem, a network location, or even generated at runtime. Use
  * {@link #inputStream()} to load the data held by a resource.
  */
-public interface Resource extends Closeable {
+public interface Resource extends AutoCloseable {
 
     /**
-     * Gets the path of this resource.
-     *
-     * @return The path
+     * @return The {@link Pack pack}
+     */
+    Pack pack();
+
+    /**
+     * @return The {@link ResourcePath path}
      */
     ResourcePath path();
-
-    /**
-     * Gets the name of the {@link PackInformation pack} which owns this resource. To
-     * get the instance, feed the returned value to
-     * {@link PackInformationManager#information(String)}.
-     *
-     * @return The parent pack.
-     * @see PackInformationManager#information(String)
-     */
-    String pack();
 
     /**
      * Returns the {@link InputStream} of this resource. Multiple calls to this
@@ -75,19 +65,11 @@ public interface Resource extends Closeable {
     InputStream inputStream();
 
     /**
-     * Checks whether this resource has metadata or not.
-     *
-     * @return True if this resource has metadata, false otherwise
-     */
-    boolean hasMetadata();
-
-    /**
      * Gets the specified metadata section for this resource or
      * {@link Optional#empty()} if it has no metadata.
      *
      * @param section The section serializer
      * @return The metadata or empty if it doesn't exist
-     * @see NamedMetadataSections
      */
     <T> Optional<T> metadata(MetadataSection<T> section);
 
@@ -95,7 +77,7 @@ public interface Resource extends Closeable {
      * Creates a new {@link BufferedReader} from this resource's
      * {@link InputStream}.
      *
-     * @param charset The charset to use, usually utf-8
+     * @param charset The charset to use, usually {@link StandardCharsets#UTF_8 utf-8}
      * @return The BufferedReader
      */
     BufferedReader newReader(Charset charset);
@@ -103,7 +85,7 @@ public interface Resource extends Closeable {
     /**
      * Reads the resource as text.
      *
-     * @param charset The charset of the text, usually utf-8
+     * @param charset The charset of the text, usually {@link StandardCharsets#UTF_8 utf-8}
      * @return The text of the resource
      * @throws IOException If an I/O error occurs
      * @see StandardCharsets
@@ -111,7 +93,7 @@ public interface Resource extends Closeable {
     String readString(Charset charset) throws IOException;
 
     /**
-     * Reads all the toBytes from this resource and returns them in a byte array.
+     * Reads all the bytes from this resource and returns them in a byte array.
      *
      * @return The toBytes of the resource
      * @throws IOException If an I/O error occurs
@@ -136,7 +118,7 @@ public interface Resource extends Closeable {
      * {@link IOException} thrown in an {@link java.io.UncheckedIOException}.
      * </p>
      *
-     * @param charset The charset of the text, usually utf-8
+     * @param charset The charset of the text, usually {@link StandardCharsets#UTF_8 utf-8}
      * @return A stream of readLines of the resource
      * @see StandardCharsets
      * @see BufferedReader#lines()

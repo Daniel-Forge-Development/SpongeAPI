@@ -117,7 +117,6 @@ import org.spongepowered.api.map.color.MapShade;
 import org.spongepowered.api.map.decoration.MapDecorationType;
 import org.spongepowered.api.map.decoration.orientation.MapDecorationOrientation;
 import org.spongepowered.api.placeholder.PlaceholderParser;
-import org.spongepowered.api.resource.metadata.NamedMetadataSection;
 import org.spongepowered.api.scheduler.TaskPriority;
 import org.spongepowered.api.scoreboard.CollisionRule;
 import org.spongepowered.api.scoreboard.Visibility;

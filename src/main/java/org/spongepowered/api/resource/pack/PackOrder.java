@@ -22,26 +22,26 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.resource.metadata;
+package org.spongepowered.api.resource.pack;
 
-import org.spongepowered.api.ResourceKey;
 import org.spongepowered.api.Sponge;
-import org.spongepowered.api.registry.DefaultedRegistryReference;
-import org.spongepowered.api.registry.RegistryKey;
-import org.spongepowered.api.registry.RegistryTypes;
 
-public final class NamedMetadataSections {
+public interface PackOrder {
 
-    // SORTFIELDS:ON
-
-    public static final DefaultedRegistryReference<NamedMetadataSection<PackMetadata>> PACK = NamedMetadataSections.key(ResourceKey.sponge("pack/pack"));
-
-    // SORTFIELDS:OFF
-
-    private NamedMetadataSections() {
+    static PackOrder first() {
+        return Sponge.game().factoryProvider().provide(Factory.class).first();
     }
 
-    private static <T> DefaultedRegistryReference<NamedMetadataSection<T>> key(final ResourceKey location) {
-        return RegistryKey.of(RegistryTypes.NAMED_META_SECTION, location).asDefaultedReference(Sponge::game);
+    static PackOrder last() {
+        return Sponge.game().factoryProvider().provide(Factory.class).last();
+    }
+
+    PackOrder opposite();
+
+    interface Factory {
+
+        PackOrder first();
+
+        PackOrder last();
     }
 }

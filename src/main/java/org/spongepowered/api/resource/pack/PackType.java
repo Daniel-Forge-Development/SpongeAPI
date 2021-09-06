@@ -24,7 +24,23 @@
  */
 package org.spongepowered.api.resource.pack;
 
-public enum PackType {
-    CLIENT_RESOURCES,
-    SERVER_DATA
+import org.spongepowered.api.Sponge;
+import org.spongepowered.api.util.Nameable;
+
+public interface PackType extends Nameable {
+
+    static PackType client() {
+        return Sponge.game().factoryProvider().provide(Factory.class).client();
+    }
+
+    static PackType server() {
+        return Sponge.game().factoryProvider().provide(Factory.class).server();
+    }
+
+    interface Factory {
+
+        PackType client();
+
+        PackType server();
+    }
 }
