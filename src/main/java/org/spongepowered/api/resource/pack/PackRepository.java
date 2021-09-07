@@ -24,53 +24,41 @@
  */
 package org.spongepowered.api.resource.pack;
 
+import org.spongepowered.api.Engine;
 import org.spongepowered.plugin.PluginContainer;
 
 import java.util.Collection;
 import java.util.Optional;
 
 /**
- * The pack list keeps track of all the known {@link Pack}s and their
- * status.
+ * Holds all the {@link Pack packs} that have been loaded into the {@link Engine}.
  */
 public interface PackRepository {
 
     /**
-     * Gets the collection of all the known {@link Pack}s. The result is
-     * immutable.
-     *
-     * @return All the packs
+     * @return The {@link Pack packs} as an unmodifiable {@link Collection}.
      */
     Collection<Pack> all();
 
     /**
-     * Gets the collection of {@link Pack}s which are not enabled.
-     *
-     * @return The disabled packs
+     * @return The disabled {@link Pack packs} as an unmodifiable {@link Collection}.
      */
     Collection<Pack> disabled();
 
     /**
-     * Gets the collection of {@link Pack}s which are enabled.
-     *
-     * @return The enabled packs
+     * @return The enabled {@link Pack packs} as an unmodifiable {@link Collection}.
      */
     Collection<Pack> enabled();
 
     /**
-     * Gets a {@link Pack} with the given name. If none exists,
-     * {@link Optional#empty()} is returned.
-     *
      * @param name The name of the pack
-     * @return The pack
+     * @return The {@link Pack} or {@link Optional#empty()} if not found
      */
     Optional<Pack> pack(String name);
 
     /**
-     * Retrieves a {@link PluginContainer plugin's} {@link Pack pack}.
-     *
-     * @param container The container
-     * @return The pack
+     * @param container The {@link PluginContainer container}
+     * @return The {@link PluginContainer plugin's} {@link Pack}
      */
     Pack pack(PluginContainer container);
 }

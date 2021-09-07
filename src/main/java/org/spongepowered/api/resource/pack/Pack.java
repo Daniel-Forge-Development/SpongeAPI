@@ -29,8 +29,7 @@ import org.spongepowered.api.Engine;
 import org.spongepowered.api.util.Nameable;
 
 /**
- * The physical representation of that are loaded
- * on an {@link Engine}.
+ * The physical representation of game assets that may or may not be loaded in an {@link Engine}.
  *
  * @see <a href=http://minecraft.gamepedia.com/Resource_pack#Contents>
  * Minecraft Wiki/Resource Packs
@@ -39,7 +38,7 @@ import org.spongepowered.api.util.Nameable;
 public interface Pack extends Nameable, AutoCloseable {
 
     /**
-     * @return The {@link PackType type}
+     * @return The {@link PackType}
      */
     PackType type();
 
@@ -55,19 +54,13 @@ public interface Pack extends Nameable, AutoCloseable {
 
     /**
      * @return The {@link Component description}
-     * @see PackContentsMetadata#description()
      */
     Component description();
 
     /**
-     * @return The {@link PackVersion version}
+     * @return The {@link PackStatus}
      */
-    PackVersion version();
-
-    /**
-     * @return The {@link PackOrder order}
-     */
-    PackOrder order();
+    PackStatus status();
 
     /**
      * @return True if this pack will always be enabled, false otherwise
@@ -75,8 +68,7 @@ public interface Pack extends Nameable, AutoCloseable {
     boolean isForced();
 
     /**
-     * @return True if this pack will always have the same {@link PackOrder order}, false otherwise
-     * @see #order()
+     * @return True if this pack has a locked order, false otherwise
      */
     boolean isLocked();
 }

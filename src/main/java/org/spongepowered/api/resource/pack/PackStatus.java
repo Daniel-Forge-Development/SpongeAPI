@@ -26,26 +26,26 @@ package org.spongepowered.api.resource.pack;
 
 import org.spongepowered.api.Sponge;
 
-public interface PackVersion {
+public interface PackStatus {
 
-    static PackVersion compatible() {
+    static PackStatus compatible() {
         return Sponge.game().factoryProvider().provide(Factory.class).compatible();
     }
 
-    static PackVersion newer() {
+    static PackStatus newer() {
         return Sponge.game().factoryProvider().provide(Factory.class).newer();
     }
 
-    static PackVersion older() {
+    static PackStatus older() {
         return Sponge.game().factoryProvider().provide(Factory.class).older();
     }
 
     interface Factory {
 
-        PackVersion compatible();
+        PackStatus compatible();
 
-        PackVersion newer();
+        PackStatus newer();
 
-        PackVersion older();
+        PackStatus older();
     }
 }

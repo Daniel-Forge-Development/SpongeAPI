@@ -40,11 +40,6 @@ import java.util.function.Predicate;
 public interface PackContentsContainer extends Nameable, AutoCloseable {
 
     /**
-     * @return The {@link PackContentsMetadata metadata}
-     */
-    PackContentsMetadata metadata();
-
-    /**
      * Gets a {@link Resource resource} within a {@link ResourcePath path} per {@link PackType type}.
      *
      * @param type The type

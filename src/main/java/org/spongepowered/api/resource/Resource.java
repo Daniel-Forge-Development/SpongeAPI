@@ -24,7 +24,6 @@
  */
 package org.spongepowered.api.resource;
 
-import org.spongepowered.api.resource.pack.PackContentsContainer;
 import org.spongepowered.api.util.annotation.DoNotStore;
 
 import java.io.InputStream;
@@ -36,11 +35,6 @@ import java.io.InputStream;
  */
 @DoNotStore
 public interface Resource extends AutoCloseable {
-
-    /**
-     * @return The {@link PackContentsContainer container}
-     */
-    PackContentsContainer container();
 
     /**
      * @return The {@link ResourcePath path}
