@@ -24,7 +24,7 @@
  */
 package org.spongepowered.api.resource;
 
-import org.spongepowered.api.resource.pack.PackContentsContainer;
+import org.spongepowered.api.resource.pack.PackContents;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -46,18 +46,18 @@ public interface ResourceManager {
      *
      * @param path The path to the resource
      * @return The resource
-     * @throws IOException                   If the resource could not be read
+     * @throws IOException If the resource could not be read
      * @throws java.io.FileNotFoundException If the file does not exist
      */
     Resource load(ResourcePath path) throws IOException;
 
     /**
      * Loads all the {@link Resource resources} at the given path from all
-     * active {@link PackContentsContainer packs}.
+     * active {@link PackContents pack contents}.
      *
      * @param path The path to the resource
      * @return The list of all resources at the path
-     * @throws IOException           If a resource could not be read
+     * @throws IOException If a resource could not be read
      * @throws FileNotFoundException If there are no resources at the path
      */
     Stream<Resource> streamAll(ResourcePath path) throws IOException;

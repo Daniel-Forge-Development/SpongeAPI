@@ -31,7 +31,7 @@ import java.io.InputStream;
 /**
  * A resource can represent any kind of loaded data. It can be a file on the
  * filesystem, a network location, or even generated at runtime. Use
- * {@link #inputStream()} to load the data held by a resource.
+ * {@link #inputStream()} to retrieve the data.
  */
 @DoNotStore
 public interface Resource extends AutoCloseable {

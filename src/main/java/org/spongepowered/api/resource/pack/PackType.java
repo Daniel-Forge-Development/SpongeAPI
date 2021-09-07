@@ -37,6 +37,11 @@ public interface PackType {
         return Sponge.game().factoryProvider().provide(Factory.class).server();
     }
 
+    /**
+     * @return The root {@link String directory name}
+     */
+    String directory();
+
     interface Factory {
 
         PackType client();

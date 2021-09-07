@@ -31,7 +31,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 /**
- * Holds all the {@link Pack packs} that have been loaded into the {@link Engine}.
+ * Holds all the {@link Pack packs} that are known to an {@link Engine}.
  */
 public interface PackRepository {
 

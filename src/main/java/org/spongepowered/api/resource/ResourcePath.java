@@ -26,12 +26,14 @@ package org.spongepowered.api.resource;
 
 import org.spongepowered.api.ResourceKey;
 import org.spongepowered.api.Sponge;
-import org.spongepowered.api.resource.pack.PackContentsContainer;
+import org.spongepowered.api.resource.pack.PackContents;
 import org.spongepowered.plugin.PluginContainer;
+
+import java.util.Optional;
 
 /**
  * A namespaced path object used to get {@link Resource}s from a
- * {@link ResourceManager resource manager} or a {@link PackContentsContainer pack contents}
+ * {@link ResourceManager resource manager} or a {@link PackContents pack contents}
  *
  * @see ResourceKey
  */
@@ -115,12 +117,9 @@ public interface ResourcePath extends Comparable<ResourcePath> {
     // resolution methods
 
     /**
-     * Resolves this resource path's parent.
-     *
-     * @return The parent path
-     * @throws IllegalStateException If the path has no parent
+     * @return The parent path or {@link Optional#empty()} if there is none
      */
-    ResourcePath parent();
+    Optional<ResourcePath> parent();
 
     /**
      * Resolves a path from the current location using the specified children.

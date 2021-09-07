@@ -37,7 +37,7 @@ import java.util.function.Predicate;
 /**
  * Represents the container that stores {@link Resource resources} for retrieval.
  */
-public interface PackContentsContainer extends Nameable, AutoCloseable {
+public interface PackContents extends Nameable, AutoCloseable {
 
     /**
      * Gets a {@link Resource resource} within a {@link ResourcePath path} per {@link PackType type}.
@@ -65,11 +65,12 @@ public interface PackContentsContainer extends Nameable, AutoCloseable {
     /**
      * Tests if this pack contains an entry at the given {@link ResourcePath}.
      *
+     * @param type The type
      * @param path The resource path
      * @return True if it exists, false if it does not
      * @see PackType
      */
-    boolean exists(ResourcePath path);
+    boolean exists(PackType type, ResourcePath path);
 
     /**
      * Gets the {@link String namespaces} per {@link PackType type}.

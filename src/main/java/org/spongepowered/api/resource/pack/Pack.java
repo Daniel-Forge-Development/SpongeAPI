@@ -26,7 +26,6 @@ package org.spongepowered.api.resource.pack;
 
 import net.kyori.adventure.text.Component;
 import org.spongepowered.api.Engine;
-import org.spongepowered.api.util.Nameable;
 
 /**
  * The physical representation of game assets that may or may not be loaded in an {@link Engine}.
@@ -35,17 +34,17 @@ import org.spongepowered.api.util.Nameable;
  * Minecraft Wiki/Resource Packs
  * </a>
  */
-public interface Pack extends Nameable, AutoCloseable {
+public interface Pack extends AutoCloseable {
 
     /**
-     * @return The {@link PackType}
+     * @return The {@link String id}
      */
-    PackType type();
+    String id();
 
     /**
-     * @return The {@link PackContentsContainer contents}
+     * @return The {@link PackContents contents}
      */
-    PackContentsContainer contents();
+    PackContents contents();
 
     /**
      * @return The {@link Component title}
