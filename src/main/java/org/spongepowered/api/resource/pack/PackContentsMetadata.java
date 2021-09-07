@@ -22,21 +22,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.resource.metadata;
+package org.spongepowered.api.resource.pack;
 
-public final class MetadataParseException extends RuntimeException {
+import net.kyori.adventure.text.Component;
+import org.spongepowered.api.data.persistence.DataSerializable;
 
-    private static final long serialVersionUID = -7843375998187638640L;
+/**
+ * Metadata for a {@link Pack pack's} {@link PackContentsContainer contents}.
+ */
+public interface PackContentsMetadata extends DataSerializable {
 
-    public MetadataParseException(final String message) {
-        super(message);
-    }
+    /**
+     * @return The {@link Component description}
+     */
+    Component description();
 
-    public MetadataParseException(final String message, final Throwable t) {
-        super(message, t);
-    }
-
-    public MetadataParseException(final Throwable t) {
-        super(t);
-    }
+    /**
+     * @return The version
+     */
+    int version();
 }

@@ -26,20 +26,16 @@ package org.spongepowered.api.resource;
 
 import org.spongepowered.api.ResourceKey;
 import org.spongepowered.api.Sponge;
+import org.spongepowered.api.resource.pack.PackContentsContainer;
 import org.spongepowered.plugin.PluginContainer;
 
 /**
- * A namespaced path object used to get {@link Resource}s from the
- * {@link ResourceManager}.
+ * A namespaced path object used to get {@link Resource}s from a
+ * {@link ResourceManager resource manager} or a {@link PackContentsContainer pack contents}
  *
  * @see ResourceKey
  */
 public interface ResourcePath extends Comparable<ResourcePath> {
-
-    /**
-     * The path separator string.
-     */
-    String SEPARATOR = "/";
 
     /**
      * Creates a resource path.

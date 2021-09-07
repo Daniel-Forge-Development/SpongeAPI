@@ -24,86 +24,59 @@
  */
 package org.spongepowered.api.resource.pack;
 
-import org.spongepowered.api.resource.Resource;
-import org.spongepowered.api.resource.ResourcePath;
-import org.spongepowered.api.resource.metadata.MetadataParseException;
-import org.spongepowered.api.resource.metadata.MetadataSection;
+import net.kyori.adventure.text.Component;
+import org.spongepowered.api.Engine;
 import org.spongepowered.api.util.Nameable;
 
-import java.io.Closeable;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-
 /**
- * A resource pack or data pack can contain several {@link Resource resources}.
- * A pack can contain both assets and data.
+ * The physical representation of that are loaded
+ * on an {@link Engine}.
  *
  * @see <a href=http://minecraft.gamepedia.com/Resource_pack#Contents>
  * Minecraft Wiki/Resource Packs
  * </a>
  */
-public interface Pack extends Nameable, Closeable {
+public interface Pack extends Nameable, AutoCloseable {
 
     /**
-     * Gets the {@link PackInformation information}.
-     *
-     * @return The information
+     * @return The {@link PackType type}
      */
-    PackInformation information();
+    PackType type();
 
     /**
-     * Gets a {@link Resource resource} within a {@link ResourcePath path} per {@link PackType type}.
-     *
-     * @param type The type
-     * @param path The domain named path
-     * @return The resource
+     * @return The {@link PackContentsContainer contents}
      */
-    Optional<Resource> resource(PackType type, ResourcePath path) throws IOException;
+    PackContentsContainer contents();
 
     /**
-     * Finds all the {@link ResourcePath}s in this pack matching the
-     * prefix and filter, and within the given depth.
-     *
-     * @param type The type
-     * @param namespace The namespace to search
-     * @param prefix The prefix of the path
-     * @param depth The depth to search
-     * @param filter The filter every path must match
-     * @return A collection of matching paths
-     * @see PackType
+     * @return The {@link Component title}
      */
-    Collection<ResourcePath> resources(PackType type, String namespace, String prefix, int depth, Predicate<String> filter);
+    Component title();
 
     /**
-     * Tests if this pack contains an entry at the given {@link ResourcePath}.
-     *
-     * @param path The resource path
-     * @return True if it exists, false if it does not
-     * @see PackType
+     * @return The {@link Component description}
+     * @see PackContentsMetadata#description()
      */
-    boolean exists(ResourcePath path);
+    Component description();
 
     /**
-     * Gets the {@link String namespaces} per {@link PackType type}.
-     *
-     * @param type The type
-     * @return The set of namespaces
+     * @return The {@link PackVersion version}
      */
-    Set<String> namespaces(PackType type);
+    PackVersion version();
 
     /**
-     * Gets the metadata of this pack. The {@link MetadataSection} deserializes a
-     * section of the pack.mcmeta file in the pack root. If the pack.mcmeta
-     * does not contain the query defined in the section,
-     * {@link Optional#empty()} is returned.
-     *
-     * @param section The name metadata section type
-     * @return The metadata if it exists
-     * @throws IOException        If the data could not be read
-     * @throws MetadataParseException If the metadata could not be parsed
+     * @return The {@link PackOrder order}
      */
-    <T> Optional<T> metadata(MetadataSection<T> section) throws IOException;
+    PackOrder order();
+
+    /**
+     * @return True if this pack will always be enabled, false otherwise
+     */
+    boolean isForced();
+
+    /**
+     * @return True if this pack will always have the same {@link PackOrder order}, false otherwise
+     * @see #order()
+     */
+    boolean isLocked();
 }

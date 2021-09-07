@@ -337,8 +337,6 @@ public final class RegistryTypes {
 
     public static final DefaultedRegistryType<MusicDisc> MUSIC_DISC = RegistryTypes.spongeKeyInGame("music_disc");
 
-    public static final DefaultedRegistryType<NamedMetadataSection<?>> NAMED_META_SECTION = RegistryTypes.spongeKeyInGame("named_meta_section");
-
     public static final DefaultedRegistryType<NotePitch> NOTE_PITCH = RegistryTypes.spongeKeyInGame("note_pitch");
 
     public static final DefaultedRegistryType<ObjectiveDisplayMode> OBJECTIVE_DISPLAY_MODE = RegistryTypes.spongeKeyInGame("objective_display_mode");

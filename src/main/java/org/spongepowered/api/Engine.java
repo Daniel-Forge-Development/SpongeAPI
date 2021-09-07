@@ -29,6 +29,7 @@ import org.spongepowered.api.registry.RegistryHolder;
 import org.spongepowered.api.resource.Resource;
 import org.spongepowered.api.resource.ResourceManager;
 import org.spongepowered.api.resource.pack.Pack;
+import org.spongepowered.api.resource.pack.PackContentsContainer;
 import org.spongepowered.api.resource.pack.PackRepository;
 import org.spongepowered.api.scheduler.Scheduler;
 
@@ -79,7 +80,7 @@ public interface Engine extends RegistryHolder {
     boolean onMainThread();
 
     /**
-     * Rediscovers all {@link Pack packs} and reloads all {@link Resource resources}.
+     * Rediscovers all {@link Resource resources} within all {@link Pack pack's} {@link PackContentsContainer contents}.
      *
      * <p>On the server, the future will always be completed.</p>
      *

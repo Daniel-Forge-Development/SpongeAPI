@@ -24,59 +24,53 @@
  */
 package org.spongepowered.api.resource.pack;
 
-import org.spongepowered.api.Engine;
 import org.spongepowered.plugin.PluginContainer;
 
 import java.util.Collection;
 import java.util.Optional;
 
 /**
- * The pack list keeps track of all the known {@link PackInformation}s and their
+ * The pack list keeps track of all the known {@link Pack}s and their
  * status.
  */
 public interface PackRepository {
 
     /**
-     * @return The {@link Engine engine}
-     */
-    Engine engine();
-
-    /**
-     * Gets the collection of all the known {@link PackInformation}s. The result is
+     * Gets the collection of all the known {@link Pack}s. The result is
      * immutable.
      *
      * @return All the packs
      */
-    Collection<PackInformation> all();
+    Collection<Pack> all();
 
     /**
-     * Gets the collection of {@link PackInformation}s which are not enabled.
+     * Gets the collection of {@link Pack}s which are not enabled.
      *
      * @return The disabled packs
      */
-    Collection<PackInformation> disabled();
+    Collection<Pack> disabled();
 
     /**
-     * Gets the collection of {@link PackInformation}s which are enabled.
+     * Gets the collection of {@link Pack}s which are enabled.
      *
      * @return The enabled packs
      */
-    Collection<PackInformation> enabled();
+    Collection<Pack> enabled();
 
     /**
-     * Gets a {@link PackInformation} with the given name. If none exists,
+     * Gets a {@link Pack} with the given name. If none exists,
      * {@link Optional#empty()} is returned.
      *
      * @param name The name of the pack
-     * @return The pack info
+     * @return The pack
      */
-    Optional<PackInformation> information(String name);
+    Optional<Pack> pack(String name);
 
     /**
-     * Retrieves a {@link PluginContainer plugin's} {@link PackInformation pack information}.
+     * Retrieves a {@link PluginContainer plugin's} {@link Pack pack}.
      *
      * @param container The container
      * @return The pack
      */
-    PackInformation information(PluginContainer container);
+    Pack pack(PluginContainer container);
 }
