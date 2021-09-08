@@ -51,10 +51,10 @@ public interface PackRepository {
     Collection<Pack> enabled();
 
     /**
-     * @param name The name of the pack
+     * @param id The id of the pack
      * @return The {@link Pack} or {@link Optional#empty()} if not found
      */
-    Optional<Pack> pack(String name);
+    Optional<Pack> pack(String id);
 
     /**
      * @param container The {@link PluginContainer container}
