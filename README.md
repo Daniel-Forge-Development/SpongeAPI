@@ -1,4 +1,4 @@
-SpongeAPI [![Build Status](https://travis-ci.org/SpongePowered/SpongeAPI.svg?branch=master)](https://travis-ci.org/SpongePowered/SpongeAPI)
+SpongeAPI [![Build Status](https://travis-ci.org/SpongePowered/SpongeAPI.svg?branch=master)](https://travis-ci.org/SpongePowered/SpongeAPI) [![Discord](https://img.shields.io/discord/831966641586831431)](https://discord.gg/7vqgtrjDGw)
 =============
 **Currently not stable and under heavy development!**  
 A Minecraft plugin API (not including an implementation). It is licensed under the [MIT License]. 
