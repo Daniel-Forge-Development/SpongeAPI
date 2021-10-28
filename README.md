@@ -7,8 +7,8 @@ A Minecraft plugin API (not including an implementation). It is licensed under t
 * [Source]
 * [Issues]
 * [Wiki]
-* [Community Chat]: [#sponge on irc.esper.net]
-* [Development Chat]: [#spongedev on irc.esper.net]
+* [Community Chat]: 
+* [Development Chat]: 
 * [Preparing for Development]
 * [Javadocs]
 
